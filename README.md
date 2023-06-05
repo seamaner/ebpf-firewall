@@ -37,17 +37,17 @@ and change the path to `/mnt/cgroup2` in `ebpf-fw.go`
 All must run as root.
 
 Load eBPF with:  
- bpftool prog load ./bpf.o /sys/fs/bpf/cgroup_firewall type cgroup/skb
+ bpftool prog load ./bpf.o /sys/fs/bpf/cgroup_firewall type cgroup/skb`
 
 Attach eBPF to a cgroup:  
-`bpftool cgroup attach /sys/fs/cgroup/user.slice/ egress pinned /sys/fs/bpf/cgroup_firewall multi
+`bpftool cgroup attach /sys/fs/cgroup/user.slice/ egress pinned /sys/fs/bpf/cgroup_firewall multi`
 
 Block an IP via update an item to the blocked_map with:  
-`bpftool map update id 222 key 192 168 10 1  value 192 168 10 1
+`bpftool map update id 222 key 192 168 10 1  value 192 168 10 1`
 note that, src ip or dst ip are used as key, so key equls to value.
 
 Get connections:
- bpftool -j map pop name flows_map
+`bpftool -j map pop name flows_map`
 
 Debug:  
-`bpftool prog tracelog
+`bpftool prog tracelog`
