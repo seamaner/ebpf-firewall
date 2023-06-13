@@ -24,7 +24,6 @@ cgroup2 FS must be mounted. By default it looks for it on `/sys/fs/cgroup/unifie
 sudo mkdir /mnt/cgroup2
 sudo mount -t cgroup2 none /mnt/cgroup2
 ```
-and change the path to `/mnt/cgroup2` in `ebpf-fw.go`
 
 
 ## Building
@@ -34,10 +33,8 @@ and change the path to `/mnt/cgroup2` in `ebpf-fw.go`
 
 ## Running
 
-All must run as root.
-
 Load eBPF with:  
- bpftool prog load ./bpf.o /sys/fs/bpf/cgroup_firewall type cgroup/skb`
+`bpftool prog load ./bpf.o /sys/fs/bpf/cgroup_firewall type cgroup/skb`
 
 Attach eBPF to a cgroup:  
 `bpftool cgroup attach /sys/fs/cgroup/user.slice/ egress pinned /sys/fs/bpf/cgroup_firewall multi`
