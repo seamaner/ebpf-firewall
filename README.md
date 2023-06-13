@@ -43,7 +43,7 @@ Block an IP via update an item to the blocked_map with:
 `bpftool map update id 222 key 192 168 10 1  value 192 168 10 1`
 note that, src ip or dst ip are used as key, so key equls to value.
 
-Get connections:
+Show connections:
 `bpftool -j map pop name flows_map`
 
 Debug:  
